@@ -16,6 +16,18 @@ const Seller = () => {
     fetchData(API);
   }, []);
 
+  const deleteHandler = async (id) =>{
+    try {
+      await axios.delete("http://localhost:7000/delete/"+id)
+      window.location.reload()
+      
+    } catch (error) {
+      console.error(error)
+      
+    }
+
+  }
+
   return (
     <>
       <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
@@ -36,8 +48,8 @@ const Seller = () => {
                   <td>{item.productName}</td>
                   <td>{item.category}</td>
                   <td>
-                    <button className="btn btn-primary">Edit</button>
-                    <button className="btn btn-danger ms-3">Delete</button>
+                    <Link to={`edit/${item.id}`} className="btn btn-primary">Edit</Link>
+                    <button onClick={e => deleteHandler(item.id)} className="btn btn-danger ms-3">Delete</button>
                   </td>
                 </tr>
               ))}
