@@ -10,11 +10,12 @@ const AddProducts = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
+  
 
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:7000/edit/"+id, { price, productName, category })
+      .put("http://localhost:7000/edit/" + id, { price, productName, category })
       .then((res) => {
         console.log(res);
         navigate("/");
@@ -26,7 +27,7 @@ const AddProducts = () => {
 
   return (
     <>
-      <div className="d-flex vh-100 justify-content-center align-items-center">
+      <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
         <div className="w-75 rounded p-3 bg-white">
           <form onSubmit={submitHandler}>
             <h2>Edit Your Selected Product</h2>
